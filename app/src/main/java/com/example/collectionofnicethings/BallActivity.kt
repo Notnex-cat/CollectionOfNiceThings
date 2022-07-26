@@ -31,8 +31,8 @@ class BallActivity : AppCompatActivity() {
         )
 
         btn.setOnClickListener {
-            val rnds = (0..12).random()
-            ans.text = answers[rnds]
+            val rnd = (0..12).random()
+            ans.text = answers[rnd]
         }
     }
 }
