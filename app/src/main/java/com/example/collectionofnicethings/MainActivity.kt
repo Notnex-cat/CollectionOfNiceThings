@@ -1,9 +1,9 @@
 package com.example.collectionofnicethings
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -17,24 +17,24 @@ class MainActivity : AppCompatActivity() {
 
         val users = arrayOf(
 
-            "рыжий котек", "белый пушистый котек", "уродливый лысый кот",
+            "Шар предсказаний", "белый пушистый котек", "уродливый лысый кот",
 
-            "ещё один пушистый котек", "кися")
+            "ещё один пушистый котек", "кися"
+        )
 
         // доступ к listView из файла XML
 
         var mListView = findViewById<ListView>(R.id.userlist)
 
-        arrayAdapter = ArrayAdapter(this,
-
-            android.R.layout.simple_list_item_1, users)
-            //Toast.makeText(applicationContext, "1", Toast.LENGTH_SHORT).show()
+        arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, users)
         mListView.adapter = arrayAdapter
 
-        mListView.setOnItemClickListener { parent, view, position, id ->
+        mListView.setOnItemClickListener { parent, view, i, id ->
 
-            Toast.makeText(this, "Clicked item :"+" "+position,Toast.LENGTH_SHORT).show()
-            getSupportFragmentManager().beginTransaction()
-                .add(android.R.id.content, FirstFragment()).commit();}
+            //Toast.makeText(this, "Clicked item :"+" "+ i, Toast.LENGTH_SHORT).show()
+            when (i) {
+                0 -> startActivity(Intent(this@MainActivity, BallActivity::class.java))
+            }
+        }
     }
 }
